@@ -17,9 +17,9 @@ app.set('view engine', 'handlebars');
 
 // OUR MOCK ARRAY OF PROJECTS
 var events = [
-    { title: "I am your first event", desc: "A great event that is super fun to look at and good", imgUrl: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA4OC85MTEvb3JpZ2luYWwvZ29sZGVuLXJldHJpZXZlci1wdXBweS5qcGVn" },
-    { title: "I am your second event", desc: "A great event that is super fun to look at and good", imgUrl: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA4OC85MTEvb3JpZ2luYWwvZ29sZGVuLXJldHJpZXZlci1wdXBweS5qcGVn" },
-    { title: "I am your third event", desc: "A great event that is super fun to look at and good", imgUrl: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA4OC85MTEvb3JpZ2luYWwvZ29sZGVuLXJldHJpZXZlci1wdXBweS5qcGVn" }
+    { title: "I am your first event", desc: "A great event that is super fun to look at and good", imgUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=640:*" },
+    { title: "I am your second event", desc: "A great event that is super fun to look at and good", imgUrl: "https://media.nature.com/lw800/magazine-assets/d41586-020-01430-5/d41586-020-01430-5_17977552.jpg" },
+    { title: "I am your third event", desc: "A great event that is super fun to look at and good", imgUrl: "https://www.washingtonian.com/wp-content/uploads/2021/09/iStock-1221173454-2048x1363.jpg" }
 ]
   
 // INDEX
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.render('events-index', { events: events });
 })
 
-// Choose a port to listen on
+// Choose a port to listen on   
 const port = process.env.PORT || 3000;
 
 // Tell the app what port to listen on
