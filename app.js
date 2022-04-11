@@ -1,5 +1,6 @@
 // Initialize express
 const express = require('express')
+const methodOverride = require('method-override')
 const { engine } = require('express-handlebars');
 
 // INITIALIZE BODY-PARSER AND ADD IT TO APP
@@ -14,6 +15,7 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 const app = express()
 // const db = require('db');
 
+app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }));
 // Use "main" as our default layout
 app.engine('handlebars', engine({ defaultLayout: 'main', handlebars: allowInsecurePrototypeAccess(Handlebars) }));
@@ -60,6 +62,28 @@ app.get('/events/:id', (req, res) => {
       console.log(err.message);
     })
 })
+
+// EDIT
+app.get('/events/:id/edit', (req, res) => {
+    models.Event.findByPk(req.params.id).then((event) => {
+      res.render('events-edit', { event: event });
+    }).catch((err) => {
+      console.log(err.message);
+    })
+});
+
+// UPDATE
+app.put('/events/:id', (req, res) => {
+    models.Event.findByPk(req.params.id).then(event => {
+      event.update(req.body).then(event => {
+        res.redirect(`/events/${req.params.id}`);
+      }).catch((err) => {
+        console.log(err);
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
+});
 
 
 // Choose a port to listen on   
