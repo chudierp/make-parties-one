@@ -17,6 +17,7 @@ const app = express()
 // const db = require('db');
 
 require('./controllers/events')(app, models);
+require('./controllers/rsvps')(app, models);
 
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }));
