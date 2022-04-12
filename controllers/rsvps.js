@@ -14,7 +14,7 @@ module.exports = (app, models) => {
         }).catch((err) => {
             console.log(err)
         });
-    });
+    });ssaddxa
     
     // DESTROY  
  }
