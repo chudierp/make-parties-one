@@ -17,11 +17,13 @@ app.use(methodOverride('_method'))
 
 require('./controllers/events')(app, models);
 require('./controllers/rsvps')(app, models);
+require('./controllers/auth')(app, models);
 
 // Use "main" as our default layout
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main', handlebars: allowInsecurePrototypeAccess(Handlebars) }));
 // Use handlebars to render
 app.set('view engine', 'handlebars');
+
 
 // Choose a port to listen on   
 const port = process.env.PORT || 3000;
