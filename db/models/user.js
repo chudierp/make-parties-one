@@ -17,45 +17,13 @@ module.exports = (sequelize, DataTypes) => {
     console.log(user);
     user.password = await bcrypt.hash(user.password, salt);
   });
+  User.prototype.comparePassword = function(password, done) {
+    bcrypt.compare(password, this.password, function(err, isMatch) {
+      return done(err, isMatch);
+    });
+  };
   User.associate = function(models) {
       // define association here
   };
   return User;
 };
-
-
-// 'use strict';
-// const {
-//   Model
-// } = require('sequelize');
-
-// module.exports = (sequelize, DataTypes) => {
-  
-//   const Event = sequelize.define('Event', {
-//     title: DataTypes.STRING,
-//     desc: DataTypes.TEXT,
-//     imgUrl: DataTypes.TEXT 
-//   }, {});
-//   Event.associate = function(models) {
-//     Event.hasMany(models.Rsvp);
-//   };
-//   return Event;
-// };
-
-// const bcrypt = require('bcrypt')
-
-// 'use strict';
-// module.exports = (sequelize, DataTypes) => {
-//   var User = sequelize.define('User', {
-//     firstName: DataTypes.STRING,
-//     lastName: DataTypes.STRING,
-//     email: Datatypes.STRING,
-//     password: DataTypes.STRING
-//   })
-
-//   User.associate = function(models) {
-  
-//   }
-
-//   return User;
-// };

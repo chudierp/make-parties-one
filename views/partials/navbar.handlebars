@@ -9,8 +9,12 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/sign-up/new">Sign Up</a>
-        <a class="nav-link" href="/login">Log in</a>
+        {{#unless currentUser}}
+          <a class="nav-link" href="/sign-up/new">Sign Up</a>
+          <a class="nav-link" href="/login">Log in</a>
+        {{else}}
+          <a class="hyperlink-off link-danger" aria-current="page" href="/logout">Logout({{currentUser.username}})</a>
+        {{/unless}}
       </li>
     </ul>
   </div>
